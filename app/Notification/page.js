@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import SockJS from "sockjs-client";
 import { Client } from "@stomp/stompjs";
-import { useUserContext } from "./UserContext.js";
+import { useUserContext } from "../UserContext";
 
 export default function NotificationBell() {
   const [notifications, setNotifications] = useState([]);
