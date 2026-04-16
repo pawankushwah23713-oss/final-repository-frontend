@@ -13,7 +13,7 @@ export default function Navbar() {
   const handleSearch = (e) => {
     e.preventDefault();
     if (!search.trim()) return;
-    router.push(`/search?query=${search}`);
+   router.push(`/search/${search}`);
   };
 
   return (
