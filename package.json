@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@next/swc-win32-x64-msvc": "^16.2.2",
     "@stomp/stompjs": "^7.3.0",
     "cloudinary": "^2.9.0",
     "emoji-picker-react": "^4.18.0",
