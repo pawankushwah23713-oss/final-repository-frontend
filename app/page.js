@@ -361,7 +361,7 @@ export default function ProductsPage() {
             </p>
 
             <button
-              onClick={() => router.push("/Auth")}
+              onClick={() => router.push("/form")}
               className="bg-white text-purple-600 font-semibold py-2 px-6 rounded-xl"
             >
               Login Now
