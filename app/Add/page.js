@@ -108,14 +108,16 @@ export default function AddProductForm() {
               Add Product
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
+
+              {/* INPUTS */}
               <input
                 type="text"
                 name="name"
                 placeholder="Product Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-2.5 sm:p-3 text-sm sm:text-base border border-gray-300 rounded-lg"
+                className="w-full p-3 text-gray-800 placeholder-gray-500 bg-white border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 required
               />
 
@@ -124,7 +126,7 @@ export default function AddProductForm() {
                 placeholder="Description"
                 value={formData.description}
                 onChange={handleChange}
-                className="w-full p-2.5 sm:p-3 text-sm sm:text-base border border-gray-300 rounded-lg resize-none"
+                className="w-full p-3 text-gray-800 placeholder-gray-500 bg-white border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 resize-none"
                 required
               />
 
@@ -134,7 +136,7 @@ export default function AddProductForm() {
                 placeholder="Price"
                 value={formData.price}
                 onChange={handleChange}
-                className="w-full p-2.5 sm:p-3 text-sm sm:text-base border border-gray-300 rounded-lg"
+                className="w-full p-3 text-gray-800 placeholder-gray-500 bg-white border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 required
               />
 
@@ -144,7 +146,7 @@ export default function AddProductForm() {
                 placeholder="SKU"
                 value={formData.sku}
                 onChange={handleChange}
-                className="w-full p-2.5 sm:p-3 text-sm sm:text-base border border-gray-300 rounded-lg"
+                className="w-full p-3 text-gray-800 placeholder-gray-500 bg-white border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 required
               />
 
@@ -154,37 +156,40 @@ export default function AddProductForm() {
                 placeholder="Category"
                 value={formData.category}
                 onChange={handleChange}
-                className="w-full p-2.5 sm:p-3 text-sm sm:text-base border border-gray-300 rounded-lg"
+                className="w-full p-3 text-gray-800 placeholder-gray-500 bg-white border border-gray-400 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                 required
               />
 
+              {/* FILE INPUT */}
               <input
                 type="file"
                 name="image"
                 accept="image/*"
                 onChange={handleChange}
-                className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                className="w-full p-2 text-gray-700 bg-white border border-gray-400 rounded-lg cursor-pointer"
                 required
               />
 
+              {/* PREVIEW */}
               {preview && (
                 <motion.img
                   src={preview}
                   alt="preview"
-                  className="w-full h-40 sm:h-48 object-cover rounded-lg"
+                  className="w-full h-44 object-cover rounded-lg"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                 />
               )}
 
+              {/* BUTTON */}
               <motion.button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 sm:py-3 text-sm sm:text-base bg-purple-600 text-white font-semibold rounded-lg flex justify-center items-center"
+                className="w-full py-3 bg-purple-600 text-white font-semibold rounded-lg flex justify-center items-center hover:bg-purple-700 transition"
               >
                 {loading ? (
                   <span className="flex items-center gap-2">
-                    <span className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
                     Uploading...
                   </span>
                 ) : (
@@ -199,21 +204,21 @@ export default function AddProductForm() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-3xl p-6 sm:p-8 md:p-10 text-center max-w-sm sm:max-w-md w-full"
+            className="bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-3xl p-8 text-center max-w-md w-full"
           >
-            <div className="text-5xl sm:text-6xl mb-3 sm:mb-4">🔒</div>
+            <div className="text-6xl mb-4">🔒</div>
 
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
+            <h2 className="text-2xl font-bold text-white mb-3">
               Access Restricted
             </h2>
 
-            <p className="text-sm sm:text-base text-white/80 mb-4 sm:mb-6">
+            <p className="text-white/80 mb-6">
               You need to login to view products.
             </p>
 
             <button
               onClick={() => router.push("/form")}
-              className="bg-white text-purple-600 text-sm sm:text-base font-semibold py-2 px-5 sm:px-6 rounded-xl"
+              className="bg-white text-purple-600 font-semibold py-2 px-6 rounded-xl hover:scale-105 transition"
             >
               Login Now
             </button>
