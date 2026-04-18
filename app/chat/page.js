@@ -126,7 +126,7 @@ export default function Home() {
               <div className="text-center mt-20">
                 <p>Login required</p>
                 <button
-                  onClick={() => router.push("/Auth")}
+                  onClick={() => router.push("/form")}
                   className="mt-4 bg-blue-500 px-5 py-2 rounded-xl text-white hover:scale-105 transition"
                 >
                   Login
