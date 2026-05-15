@@ -16,7 +16,7 @@ export default function ProductsPage() {
   const userEmail = user?.email;
 
   useEffect(() => {
-    fetch("https://shopingbackend-production.up.railway.app/api/products/all")
+    fetch("https://final-repository-3.onrender.com/api/products/all")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.log(err));
@@ -28,7 +28,7 @@ export default function ProductsPage() {
     if (!text) return alert("Empty comment!");
 
     const res = await fetch(
-      `https://shopingbackend-production.up.railway.app/api/products/comment/${productId}`,
+      `https://final-repository-3.onrender.com/api/products/comment/${productId}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -51,7 +51,7 @@ export default function ProductsPage() {
   // ❤️ LIKE
   const handleLike = async (productId) => {
     const res = await fetch(
-      `https://shopingbackend-production.up.railway.app/api/products/like/${productId}?email=${userEmail}`,
+      `https://final-repository-3.onrender.com/api/products/like/${productId}?email=${userEmail}`,
       { method: "PUT" }
     );
 
@@ -73,7 +73,7 @@ export default function ProductsPage() {
     if (!confirm("Delete your comment?")) return;
 
     const res = await fetch(
-      `https://shopingbackend-production.up.railway.app/api/products/comment/${productId}/${index}?email=${userEmail}`,
+      `https://final-repository-3.onrender.com/api/products/comment/${productId}/${index}?email=${userEmail}`,
       { method: "DELETE" }
     );
 
