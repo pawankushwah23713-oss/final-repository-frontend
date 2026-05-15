@@ -13,7 +13,7 @@ export default function StatusUpload({ refresh }) {
       const formData = new FormData();
       formData.append("file", file);
 
-      const res = await fetch("https://final-repository-production.up.railway.app/file/upload", {
+      const res = await fetch("https://final-repository-3.onrender.com/file/upload", {
         method: "POST",
         body: formData,
       });
