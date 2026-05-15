@@ -27,7 +27,7 @@ export default function AddStory({ onClose, onUpload }) {
     }
 
     try {
-      const res = await fetch("https://final-repository-production.up.railway.app/status/upload", {
+      const res = await fetch("https://final-repository-3.onrender.com/status/upload", {
         method: "POST",
         body: formData,
       });
