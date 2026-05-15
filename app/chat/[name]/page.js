@@ -25,7 +25,7 @@ export default function ChatPage() {
   const [showEmoji, setShowEmoji] = useState(false);
   const chatEndRef = useRef(null);
 
-  const customEmojis = [/* SAME ARRAY */];
+  const customEmojis = [];
 
   useEffect(() => {
     if (user?.email) setSender(user.email);
@@ -169,7 +169,7 @@ export default function ChatPage() {
               <div className="text-sm sm:text-base font-semibold truncate">
                 {receiver}
               </div>
-              <div className="text-xs">
+              <div className="text-xs text-gray-200">
                 {isTyping ? "typing..." : "Online"}
               </div>
             </div>
@@ -192,8 +192,8 @@ export default function ChatPage() {
                 <div
                   className={`px-3 py-2 sm:px-4 rounded-2xl max-w-[75%] sm:max-w-xs md:max-w-md break-words ${
                     msg.sender === sender
-                      ? "bg-blue-500 text-white"
-                      : "bg-white text-black"
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-200 text-gray-900"
                   }`}
                 >
                   <div className="text-sm sm:text-base">
@@ -201,7 +201,7 @@ export default function ChatPage() {
                   </div>
 
                   {msg.sender === sender && (
-                    <div className="text-[10px] sm:text-xs text-right mt-1">
+                    <div className="text-[10px] sm:text-xs text-right mt-1 text-white">
                       {getStatusIcon(msg.status)}
                     </div>
                   )}
@@ -234,7 +234,7 @@ export default function ChatPage() {
                   <button
                     key={i}
                     onClick={() => handleCustomEmoji(emoji)}
-                    className="text-lg"
+                    className="text-lg text-black"
                   >
                     {emoji.value}
                   </button>
@@ -245,7 +245,7 @@ export default function ChatPage() {
             <input
               value={message}
               onChange={handleTyping}
-              className="flex-1 border px-3 py-2 text-sm sm:text-base rounded-full"
+              className="flex-1 border px-3 py-2 text-sm sm:text-base rounded-full text-black placeholder-gray-500"
               placeholder="Type message..."
             />
 
@@ -258,7 +258,7 @@ export default function ChatPage() {
           </div>
         </div>
       ) : (
-        <div className="h-screen flex items-center justify-center text-lg">
+        <div className="h-screen flex items-center justify-center text-lg text-black">
           Login Required
         </div>
       )}
