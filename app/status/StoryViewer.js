@@ -30,7 +30,7 @@ export default function StoryViewer({
     if (!status) return;
 
     fetch(
-      `https://final-repository-production.up.railway.app/status/seen/${status.id}?userId=1`,
+      `https://final-repository-3.onrender.com/status/seen/${status.id}?userId=1`,
       { method: "POST" }
     );
   }, [index]);
@@ -40,7 +40,7 @@ export default function StoryViewer({
     if (!confirm("Delete this status?")) return;
 
     // ✅ sahi
- await fetch(`https://final-repository-production.up.railway.app/status/${status.id}?username=${user.email}`, {
+ await fetch(`https://final-repository-3.onrender.com/status/${status.id}?username=${user.email}`, {
   method: "DELETE",
 })
 
