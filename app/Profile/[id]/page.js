@@ -15,7 +15,7 @@ export default function ProfilePage() {
   const userEmail = user?.email;
 
   useEffect(() => {
-    fetch("https://final-repository-production.up.railway.app/api/products/profile", {
+    fetch("https://final-repository-3.onrender.com/api/products/profile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
