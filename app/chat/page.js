@@ -19,7 +19,7 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [currentSong, setCurrentSong] = useState(null);
 
-  const [activeTab, setActiveTab] = useState("chat");
+  const [activeTab, setActiveTab] = useState("chat"); // ✅ NEW
 
   const { user, flag } = useUserContext();
   const router = useRouter();
@@ -28,6 +28,7 @@ export default function Home() {
 
   const currentUser = user?.email;
 
+  // USERS
   useEffect(() => {
     if (!user?.email) return;
 
@@ -44,6 +45,7 @@ export default function Home() {
     fetchUsers();
   }, [user]);
 
+  // MUSIC
   const fetchSongs = async () => {
     const res = await fetch("https://final-repository-3.onrender.com/music/all");
     const data = await res.json();
@@ -87,7 +89,7 @@ export default function Home() {
   return (
     <div className="w-full min-h-screen flex flex-col bg-gradient-to-br from-gray-100 via-blue-100 to-purple-100">
 
-      {/* TOP NAV */}
+      {/* 🔥 TOP NAV */}
       <div className="flex justify-around bg-white shadow-md p-2 sticky top-0 z-50">
         {["status", "chat", "music"].map((tab) => (
           <button
@@ -106,7 +108,7 @@ export default function Home() {
 
       <div className="flex flex-1 flex-col md:flex-row">
 
-        {/* STATUS */}
+        {/* ✅ STATUS */}
         {activeTab === "status" && (
           <div className="w-full md:w-[30%] min-w-[250px] bg-white/70 backdrop-blur-xl border-r flex flex-col shadow-lg">
             <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-4 font-bold text-lg">
@@ -133,16 +135,16 @@ export default function Home() {
           </div>
         )}
 
-        {/* CHAT (TEXT BLACK FIXED) */}
+        {/* ✅ CHAT */}
         {activeTab === "chat" && (
-          <div className="flex-1 flex flex-col text-black">
-            <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-black p-4 font-bold text-lg shadow-md">
+          <div className="flex-1 flex flex-col">
+            <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 font-bold text-lg shadow-md">
               Chats
             </div>
 
             <div className="flex-1 overflow-y-auto p-4">
               {!flag ? (
-                <div className="text-center mt-20 text-black">
+                <div className="text-center mt-20">
                   <p>Login required</p>
                   <button
                     onClick={() => router.push("/form")}
@@ -160,15 +162,15 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
                     whileHover={{ scale: 1.05 }}
-                    className="bg-white/80 backdrop-blur-lg p-4 rounded-2xl shadow-md mb-3 cursor-pointer hover:shadow-xl transition text-black"
+                    className="bg-white/80 backdrop-blur-lg p-4 rounded-2xl shadow-md mb-3 cursor-pointer hover:shadow-xl transition"
                   >
                     <div className="flex gap-3 items-center">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center">
                         {u?.email?.[0]?.toUpperCase()}
                       </div>
                       <div>
-                        <div className="font-semibold text-black">{u.email}</div>
-                        <div className="text-sm text-gray-700">
+                        <div className="font-semibold">{u.email}</div>
+                        <div className="text-sm text-gray-500">
                           Start chatting
                         </div>
                       </div>
@@ -181,7 +183,7 @@ export default function Home() {
         )}
       </div>
 
-      {/* MUSIC */}
+      {/* ✅ MUSIC */}
       {activeTab === "music" && (
         <div className="bg-white/60 backdrop-blur-xl text-gray-900 p-4 md:p-6 overflow-y-auto shadow-inner">
 
@@ -196,6 +198,7 @@ export default function Home() {
             </button>
           </div>
 
+          {/* SEARCH */}
           <div className="flex gap-3 mb-6 flex-col sm:flex-row">
             <input
               value={search}
@@ -211,24 +214,41 @@ export default function Home() {
             </button>
           </div>
 
+          {/* SONGS */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {songs.map((song, i) => (
               <motion.div
                 key={song.id}
-                className="bg-white/80 p-4 rounded-2xl shadow-md"
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.05 }}
+                whileHover={{ scale: 1.07 }}
+                className="relative bg-white/80 backdrop-blur-xl p-4 rounded-2xl shadow-md hover:shadow-xl transition"
               >
+                {currentUser === song.username && (
+                  <button
+                    onClick={() => deleteSong(song.id)}
+                    className="absolute top-2 right-2 text-red-500 bg-white rounded-full px-2 py-1 shadow hover:bg-red-100 hover:scale-110 transition"
+                  >
+                    delete
+                  </button>
+                )}
+
                 <h2 className="font-semibold">{song.title}</h2>
                 <p className="text-sm text-gray-500">{song.artist}</p>
 
                 <div className="flex justify-between mt-3">
                   <button
                     onClick={() => setCurrentSong(song)}
-                    className="bg-blue-500 text-white px-3 py-1 rounded-full"
+                    className="bg-blue-500 text-white px-3 py-1 rounded-full hover:scale-110 transition"
                   >
                     ▶
                   </button>
 
-                  <button onClick={() => likeSong(song.id)}>
+                  <button
+                    onClick={() => likeSong(song.id)}
+                    className="hover:scale-110 transition"
+                  >
                     ❤️ {song.likes}
                   </button>
                 </div>
@@ -237,6 +257,45 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* FLOAT BUTTON */}
+      <button
+        onClick={() => router.push("/music/upload")}
+        className="fixed bottom-5 right-5 md:bottom-20 bg-gradient-to-r from-green-500 to-emerald-500 text-white w-14 h-14 rounded-full text-2xl shadow-xl hover:scale-110 transition"
+      >
+        +
+      </button>
+
+      {/* PLAYER */}
+      {currentSong && (
+        <div className="fixed bottom-0 w-full bg-white/80 backdrop-blur-xl p-4 flex justify-between items-center shadow-lg">
+          <div>
+            <h3>{currentSong.title}</h3>
+            <p className="text-sm text-gray-500">
+              {currentSong.artist}
+            </p>
+          </div>
+
+          <audio controls autoPlay src={currentSong.url}></audio>
+        </div>
+      )}
+
+      {/* MODALS */}
+      {openUpload && (
+        <StatusUploaderUI
+          onClose={() => setOpenUpload(false)}
+          refresh={refresh}
+        />
+      )}
+
+      {viewer && (
+        <StoryViewer
+          statuses={viewer.statuses}
+          startIndex={viewer.index}
+          onClose={() => setViewer(null)}
+          onDelete={refresh}
+        />
+      )}
     </div>
   );
-}
+}  
