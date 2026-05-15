@@ -14,7 +14,7 @@ export default function StatusUpload({ refresh }) {
       const formData = new FormData();
       formData.append("file", file);
 
-      const res = await fetch("http://localhost:8080/upload", {
+      const res = await fetch("https://final-repository-3.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
@@ -23,7 +23,7 @@ export default function StatusUpload({ refresh }) {
       imageUrl = data.url;
     }
 
-    await fetch("http://localhost:8080/status/add", {
+    await fetch("https://final-repository-3.onrender.com/status/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
