@@ -24,9 +24,9 @@ export default function Footer() {
           <h3 className="text-white font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li onClick={() => router.push("/")} className="cursor-pointer hover:text-white">Home</li>
-            <li onClick={() => router.push("/login")} className="cursor-pointer hover:text-white">Login</li>
-            <li onClick={() => router.push("/profile")} className="cursor-pointer hover:text-white">Profile</li>
-            <li onClick={() => router.push("/add-product")} className="cursor-pointer hover:text-white">Add Product</li>
+            <li onClick={() => router.push("/form")} className="cursor-pointer hover:text-white">Login</li>
+            <li onClick={() => router.push("/Profile")} className="cursor-pointer hover:text-white">Profile</li>
+            <li onClick={() => router.push("/Add")} className="cursor-pointer hover:text-white">Add Product</li>
           </ul>
         </div>
 
