@@ -2,7 +2,7 @@ import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 
 useEffect(() => {
-  const socket = new SockJS("https://final-repository-production.up.railway.app/ws");
+  const socket = new SockJS("https://final-repository-3.onrender.com/ws");
   const stompClient = Stomp.over(socket);
 
   stompClient.connect({}, () => {
