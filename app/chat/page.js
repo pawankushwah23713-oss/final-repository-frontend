@@ -85,7 +85,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col bg-gradient-to-br from-gray-100 via-blue-100 to-purple-100 text-gray-900">
+    <div className="w-full min-h-screen flex flex-col bg-gradient-to-br from-gray-100 via-blue-100 to-purple-100">
 
       {/* TOP NAV */}
       <div className="flex justify-around bg-white shadow-md p-2 sticky top-0 z-50">
@@ -95,8 +95,8 @@ export default function Home() {
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-2 rounded-xl font-semibold transition ${
               activeTab === tab
-                ? "bg-blue-600 text-white"
-                : "bg-gray-200 text-gray-800"
+                ? "bg-blue-500 text-white"
+                : "bg-gray-200 text-gray-700"
             }`}
           >
             {tab.toUpperCase()}
@@ -108,7 +108,7 @@ export default function Home() {
 
         {/* STATUS */}
         {activeTab === "status" && (
-          <div className="w-full md:w-[30%] min-w-[250px] bg-white/80 backdrop-blur-xl border-r flex flex-col shadow-lg text-gray-900">
+          <div className="w-full md:w-[30%] min-w-[250px] bg-white/70 backdrop-blur-xl border-r flex flex-col shadow-lg">
             <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white p-4 font-bold text-lg">
               Status
             </div>
@@ -125,7 +125,7 @@ export default function Home() {
             <div className="p-3">
               <button
                 onClick={() => setOpenUpload(true)}
-                className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-xl"
+                className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-xl shadow-md hover:scale-105 transition"
               >
                 + Add Status
               </button>
@@ -133,20 +133,20 @@ export default function Home() {
           </div>
         )}
 
-        {/* CHAT */}
+        {/* CHAT (TEXT BLACK FIXED) */}
         {activeTab === "chat" && (
-          <div className="flex-1 flex flex-col text-gray-900">
-            <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 font-bold text-lg">
+          <div className="flex-1 flex flex-col text-black">
+            <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-black p-4 font-bold text-lg shadow-md">
               Chats
             </div>
 
             <div className="flex-1 overflow-y-auto p-4">
               {!flag ? (
-                <div className="text-center mt-20 text-gray-900">
+                <div className="text-center mt-20 text-black">
                   <p>Login required</p>
                   <button
                     onClick={() => router.push("/form")}
-                    className="mt-4 bg-blue-600 px-5 py-2 rounded-xl text-white"
+                    className="mt-4 bg-blue-500 px-5 py-2 rounded-xl text-white hover:scale-105 transition"
                   >
                     Login
                   </button>
@@ -160,15 +160,15 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
                     whileHover={{ scale: 1.05 }}
-                    className="bg-white p-4 rounded-2xl shadow-md mb-3 cursor-pointer hover:shadow-xl text-gray-900"
+                    className="bg-white/80 backdrop-blur-lg p-4 rounded-2xl shadow-md mb-3 cursor-pointer hover:shadow-xl transition text-black"
                   >
                     <div className="flex gap-3 items-center">
-                      <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center">
                         {u?.email?.[0]?.toUpperCase()}
                       </div>
                       <div>
-                        <div className="font-semibold text-gray-900">{u.email}</div>
-                        <div className="text-sm text-gray-600">
+                        <div className="font-semibold text-black">{u.email}</div>
+                        <div className="text-sm text-gray-700">
                           Start chatting
                         </div>
                       </div>
@@ -183,48 +183,52 @@ export default function Home() {
 
       {/* MUSIC */}
       {activeTab === "music" && (
-        <div className="bg-white/80 backdrop-blur-xl text-gray-900 p-4 md:p-6 overflow-y-auto">
+        <div className="bg-white/60 backdrop-blur-xl text-gray-900 p-4 md:p-6 overflow-y-auto shadow-inner">
 
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-900">🎵 Music Zone</h1>
+            <h1 className="text-2xl md:text-3xl font-bold">🎵 Music Zone</h1>
 
             <button
               onClick={() => router.push("/music/upload")}
-              className="bg-green-500 text-white px-5 py-2 rounded-xl"
+              className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-xl shadow-md hover:scale-105 transition"
             >
               + Add Music
             </button>
           </div>
 
-          {/* SEARCH */}
           <div className="flex gap-3 mb-6 flex-col sm:flex-row">
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search songs..."
-              className="p-3 rounded-xl bg-white shadow w-full text-gray-900 placeholder-gray-500"
+              className="p-3 rounded-xl bg-white shadow w-full focus:outline-none focus:ring-2 focus:ring-green-400"
             />
-            <button className="bg-green-500 text-white px-5 rounded-xl">
+            <button
+              onClick={handleSearch}
+              className="bg-green-500 text-white px-5 rounded-xl hover:scale-105 transition"
+            >
               Search
             </button>
           </div>
 
-          {/* SONGS */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {songs.map((song, i) => (
               <motion.div
                 key={song.id}
-                className="bg-white p-4 rounded-2xl shadow-md text-gray-900"
+                className="bg-white/80 p-4 rounded-2xl shadow-md"
               >
-                <h2 className="font-semibold text-gray-900">{song.title}</h2>
-                <p className="text-sm text-gray-600">{song.artist}</p>
+                <h2 className="font-semibold">{song.title}</h2>
+                <p className="text-sm text-gray-500">{song.artist}</p>
 
                 <div className="flex justify-between mt-3">
-                  <button className="bg-blue-600 text-white px-3 py-1 rounded-full">
+                  <button
+                    onClick={() => setCurrentSong(song)}
+                    className="bg-blue-500 text-white px-3 py-1 rounded-full"
+                  >
                     ▶
                   </button>
 
-                  <button className="text-red-500">
+                  <button onClick={() => likeSong(song.id)}>
                     ❤️ {song.likes}
                   </button>
                 </div>
