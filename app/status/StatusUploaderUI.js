@@ -21,14 +21,14 @@ export default function StatusUploaderUI({ onClose, refresh }) {
     const formData = new FormData();
     formData.append("file", file);
 
-    const res = await fetch("https://final-repository-production.up.railway.app/file/upload", {
+    const res = await fetch("https://final-repository-3.onrender.com/file/upload", {
       method: "POST",
       body: formData,
     });
 
     const url = await res.text();
 
-    await fetch("https://final-repository-production.up.railway.app/status/add", {
+    await fetch("https://final-repository-3.onrender.com/status/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
