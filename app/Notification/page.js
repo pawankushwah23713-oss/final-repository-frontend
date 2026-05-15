@@ -22,7 +22,7 @@ export default function NotificationBell() {
 
     // ✅ 1. FETCH OFFLINE NOTIFICATIONS
     fetch(
-      `https://final-repository-production.up.railway.app/api/products/pending?username=${encodeURIComponent(
+      `https://final-repository-3.onrender.com/api/products/pending?username=${encodeURIComponent(
         userEmail
       )}`
     )
@@ -44,7 +44,7 @@ export default function NotificationBell() {
 
     // ✅ 2. SOCKET CONNECT
     const socket = new SockJS(
-      "https://final-repository-production.up.railway.app/ws?username=" +
+      "https://final-repository-3.onrender.com/ws?username=" +
         encodeURIComponent(userEmail) // 🔥 FIXED
     );
 
