@@ -6,7 +6,7 @@ export default function StatusList({ refreshKey, onOpen }) {
   const [statuses, setStatuses] = useState([]);
 
   useEffect(() => {
-    fetch("https://final-repository-production.up.railway.app/status/all")
+    fetch("https://final-repository-3.onrender.com/status/all")
       .then((res) => res.json())
       .then((data) => {
         console.log("API DATA 👉", data);
