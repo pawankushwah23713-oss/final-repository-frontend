@@ -10,7 +10,7 @@ export default function ProductsPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("https://final-repository-production.up.railway.app/api/products/profile", {
+    fetch("https://final-repository-3.onrender.com/api/products/profile", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export default function ProductsPage() {
   }, []);
 
   const handleDelete = (productId) => {
-    fetch(`https://final-repository-production.up.railway.app/api/products/${productId}`, {
+    fetch(`https://final-repository-3.onrender.com/api/products/${productId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
