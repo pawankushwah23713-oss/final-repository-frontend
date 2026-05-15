@@ -28,7 +28,7 @@ export default function UploadMusic() {
     formData.append("username", user?.email);
 
     try {
-      const res = await fetch("https://final-repository-production.up.railway.app/music/upload", {
+      const res = await fetch("https://final-repository-3.onrender.com/music/upload", {
         method: "POST",
         body: formData,
       });
