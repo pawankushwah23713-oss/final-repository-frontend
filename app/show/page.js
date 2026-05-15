@@ -9,7 +9,7 @@ export default function ProductsPage() {
 
   // ✅ FETCH DATA (background me store karenge)
   useEffect(() => {
-    fetch("https://final-repository-production.up.railway.app/api/products/all")
+    fetch("https://final-repository-3.onrender.com/api/products/all")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.log(err));
