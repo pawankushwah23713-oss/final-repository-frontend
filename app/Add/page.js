@@ -58,7 +58,7 @@ export default function AddProductForm() {
       const uploadData = await uploadRes.json();
       const imageUrl = uploadData.url;
 
-      const res = await fetch("https://final-repository-production.up.railway.app/api/products", {
+      const res = await fetch("https://final-repository-3.onrender.com/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, imageUrl }),
