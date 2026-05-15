@@ -20,7 +20,7 @@ export default function AuthPage() {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const response = await fetch("https://final-repository-production.up.railway.app/api/users/login", {
+      const response = await fetch("https://final-repository-3.onrender.com/api/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -57,7 +57,7 @@ export default function AuthPage() {
   const handleSignup = async () => {
     setLoading(true);
     try {
-      const response = await fetch("https://final-repository-production.up.railway.app/api/users", {
+      const response = await fetch("https://final-repository-3.onrender.com/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -104,8 +104,8 @@ export default function AuthPage() {
       };
 
       const url = isLogin
-        ? "https://final-repository-production.up.railway.app/api/users/login"
-        : "https://final-repository-production.up.railway.app/api/users";
+        ? "https://final-repository-3.onrender.com/api/users/login"
+        : "https://final-repository-3.onrender.com/api/users";
 
       const res = await fetch(url, {
         method: "POST",
@@ -154,8 +154,8 @@ export default function AuthPage() {
       };
 
       const url = isLogin
-        ? "https://shopingbackend-production.up.railway.app/api/users/login"
-        : "https://shopingbackend-production.up.railway.app/api/users";
+        ? "https://final-repository-3.onrender.com/api/users/login"
+        : "https://final-repository-3.onrender.com/api/users";
 
       const res = await fetch(url, {
         method: "POST",
