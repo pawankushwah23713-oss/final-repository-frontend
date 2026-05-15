@@ -39,7 +39,7 @@ export default function ChatPage() {
     if (!user?.email) return;
 
     const socket = new SockJS(
-      "https://final-repository-production.up.railway.app/ws?username=" +
+      "https://final-repository-3.onrender.com/ws?username=" +
         encodeURIComponent(user.email)
     );
 
@@ -51,7 +51,7 @@ export default function ChatPage() {
 
         try {
           const res = await fetch(
-            `https://final-repository-production.up.railway.app/api/pending?username=${user.email}`
+            `https://final-repository-3.onrender.com/api/pending?username=${user.email}`
           );
           const data = await res.json();
 
