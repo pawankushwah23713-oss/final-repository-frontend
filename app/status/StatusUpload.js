@@ -22,7 +22,7 @@ export default function StatusUpload({ refresh }) {
       type = file.type.startsWith("video") ? "VIDEO" : "IMAGE";
     }
 
-    await fetch("https://final-repository-production.up.railway.app/status/add", {
+    await fetch("https://final-repository-3.onrender.com//status/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
