@@ -34,7 +34,7 @@ export default function Home() {
 
     const fetchUsers = async () => {
       const res = await fetch(
-        `https://final-repository-production.up.railway.app/api/users?email=${encodeURIComponent(
+        `https://final-repository-3.onrender.com/api/users?email=${encodeURIComponent(
           user.email
         )}`
       );
@@ -47,7 +47,7 @@ export default function Home() {
 
   // MUSIC
   const fetchSongs = async () => {
-    const res = await fetch("https://final-repository-production.up.railway.app/music/all");
+    const res = await fetch("https://final-repository-3.onrender.com/music/all");
     const data = await res.json();
     setSongs(data);
   };
@@ -57,7 +57,7 @@ export default function Home() {
   }, []);
 
   const likeSong = async (id) => {
-    await fetch(`https://final-repository-production.up.railway.app/music/like/${id}`, {
+    await fetch(`https://final-repository-3.onrender.com/music/like/${id}`, {
       method: "PUT",
     });
     fetchSongs();
@@ -67,7 +67,7 @@ export default function Home() {
     if (!confirm("Delete this song?")) return;
 
     await fetch(
-      `https://final-repository-production.up.railway.app/music/delete/${id}?username=${user?.email}`,
+      `https://final-repository-3.onrender.com/music/delete/${id}?username=${user?.email}`,
       { method: "DELETE" }
     );
 
@@ -76,7 +76,7 @@ export default function Home() {
 
   const handleSearch = async () => {
     const res = await fetch(
-      `https://final-repository-production.up.railway.app/music/search?query=${search}`
+      `https://final-repository-3.onrender.com/music/search?query=${search}`
     );
     const data = await res.json();
     setSongs(data);
