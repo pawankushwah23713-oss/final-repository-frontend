@@ -26,7 +26,7 @@ export default function SearchPage({ params }) {
     setLoading(true);
 
     fetch(
-      `https://final-repository-production.up.railway.app/api/products/search?q=${query}`
+      `https://final-repository-3.onrender.com/api/products/search?q=${query}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -41,7 +41,7 @@ export default function SearchPage({ params }) {
     if (!text) return alert("Empty comment!");
 
     const res = await fetch(
-      `https://final-repository-production.up.railway.app/api/products/comment/${productId}`,
+      `https://final-repository-3.onrender.com/api/products/comment/${productId}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@ export default function SearchPage({ params }) {
 
   const handleLike = async (productId) => {
     const res = await fetch(
-      `https://final-repository-production.up.railway.app/api/products/like/${productId}?email=${userEmail}`,
+      `https://final-repository-3.onrender.com/api/products/like/${productId}?email=${userEmail}`,
       { method: "PUT" }
     );
 
@@ -75,7 +75,7 @@ export default function SearchPage({ params }) {
     if (!confirm("Delete your comment?")) return;
 
     const res = await fetch(
-      `https://final-repository-production.up.railway.app/api/products/comment/${productId}/${index}?email=${userEmail}`,
+      `https://final-repository-3.onrender.com/api/products/comment/${productId}/${index}?email=${userEmail}`,
       { method: "DELETE" }
     );
 
