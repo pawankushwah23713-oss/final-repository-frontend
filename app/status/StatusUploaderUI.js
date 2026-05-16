@@ -52,8 +52,18 @@ export default function StatusUploaderUI({ onClose, refresh }) {
 
       {/* Top */}
       <div className="flex justify-between p-4">
-        <button onClick={onClose}>✖</button>
-        <button onClick={upload}>Send ➤</button>
+        <button
+  onClick={onClose}
+  className="bg-red-500 px-3 py-1 rounded-lg text-white"
+>
+  ✖
+</button>
+        <button
+  onClick={upload}
+  className="bg-green-500 px-4 py-2 rounded-lg text-white font-semibold shadow-lg"
+>
+  Send ➤
+</button>
       </div>
 
       {/* Preview */}
