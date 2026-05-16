@@ -165,11 +165,11 @@ export default function Home() {
                     className="bg-white/80 backdrop-blur-lg p-4 rounded-2xl shadow-md mb-3 cursor-pointer hover:shadow-xl transition"
                   >
                     <div className="flex gap-3 items-center">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-black flex items-center justify-center">
                         {u?.email?.[0]?.toUpperCase()}
                       </div>
                       <div>
-                        <div className="font-semibold">{u.email}</div>
+                        <div className="font-semibold text-black">{u.email}</div>
                         <div className="text-sm text-gray-500">
                           Start chatting
                         </div>
