@@ -1,13 +1,14 @@
 "use client";
 import { useRef, useState } from "react";
 import { useUserContext } from "../UserContext.js";
+
 export default function StatusUploaderUI({ onClose, refresh }) {
   const fileRef = useRef();
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
 
   const pickFile = () => fileRef.current.click();
-  const {user , setUser,flag, setFlag} = useUserContext();
+  const { user } = useUserContext();
 
   const handleFile = (e) => {
     const f = e.target.files[0];
@@ -37,9 +38,7 @@ export default function StatusUploaderUI({ onClose, refresh }) {
         userId: "1",
         username: user?.email,
         contentUrl: url,
-        type: file.type.startsWith("video")
-          ? "VIDEO"
-          : "IMAGE",
+        type: file.type.startsWith("video") ? "VIDEO" : "IMAGE",
       }),
     });
 
@@ -49,22 +48,6 @@ export default function StatusUploaderUI({ onClose, refresh }) {
 
   return (
     <div className="fixed inset-0 bg-black text-white flex flex-col">
-
-      {/* Top */}
-      <div className="flex justify-between p-4">
-        <button
-  onClick={onClose}
-  className="bg-red-500 px-3 py-1 rounded-lg text-white"
->
-  ✖
-</button>
-        <button
-  onClick={upload}
-  className="bg-green-500 px-4 py-2 rounded-lg text-white font-semibold shadow-lg"
->
-  Send ➤
-</button>
-      </div>
 
       {/* Preview */}
       <div className="flex-1 flex items-center justify-center">
@@ -86,19 +69,39 @@ export default function StatusUploaderUI({ onClose, refresh }) {
         )}
       </div>
 
-      {/* Bottom */}
-      <div className="flex justify-center gap-6 p-6">
+      {/* Bottom Controls */}
+      <div className="flex justify-between items-center p-6 bg-black/60 backdrop-blur-md">
+
+        {/* CLOSE */}
         <button
-          onClick={pickFile}
-          className="bg-gray-700 p-3 rounded-full"
+          onClick={onClose}
+          className="bg-red-500 px-3 py-1 rounded-lg text-white"
         >
-          📁
+          ✖
         </button>
 
+        {/* FILE PICK */}
+        <div className="flex gap-6">
+          <button
+            onClick={pickFile}
+            className="bg-gray-700 p-3 rounded-full"
+          >
+            📁
+          </button>
+
+          <button
+            onClick={pickFile}
+            className="w-16 h-16 border-4 border-white rounded-full"
+          ></button>
+        </div>
+
+        {/* SEND */}
         <button
-          onClick={pickFile}
-          className="w-16 h-16 border-4 border-white rounded-full"
-        ></button>
+          onClick={upload}
+          className="bg-green-500 px-4 py-2 rounded-lg text-white font-semibold shadow-lg"
+        >
+          Send ➤
+        </button>
 
         <input
           type="file"
